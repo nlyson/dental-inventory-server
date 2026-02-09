@@ -7,6 +7,7 @@ const { apiKeyAuth } = require('./middleware/auth');
 const healthRoutes = require('./routes/health');
 const proceduresRoutes = require('./routes/procedures');
 const equipmentRoutes = require('./routes/equipment');
+const suppliesRoutes = require('./routes/supplies');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -25,6 +26,7 @@ app.use((req, res, next) => {
 app.use('/health', healthRoutes);
 app.use('/fetch-procedures', apiKeyAuth, proceduresRoutes);
 app.use('/analyze-equipment', apiKeyAuth, equipmentRoutes);
+app.use('/supplies', apiKeyAuth, suppliesRoutes);
 
 // 404 handler
 app.use((req, res) => {
